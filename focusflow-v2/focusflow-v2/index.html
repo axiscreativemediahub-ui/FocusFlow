@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusFlow | Productivity Dashboard</title>
+    <meta name="description" content="A premium task manager and Pomodoro timer.">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar" aria-label="Sidebar Navigation">
+            <div class="logo">FocusFlow</div>
+            <nav class="nav-menu">
+                <button class="nav-btn active" data-view="dashboard">Dashboard</button>
+                <button class="nav-btn" data-view="tasks">Tasks</button>
+                <button class="nav-btn" data-view="settings">Settings</button>
+            </nav>
+            <div class="theme-toggle">
+                <button id="toggle-theme" aria-label="Toggle Dark/Light Theme">Toggle Theme</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <h1 id="view-title">Dashboard</h1>
+                <div class="stats-summary">
+                    <span id="header-productivity">Productivity: 0%</span>
+                </div>
+            </header>
+
+            <div id="view-dashboard" class="view-section active">
+                <div class="dashboard-grid">
+                    <div class="card timer-card">
+                        <h2>Focus Timer</h2>
+                        <div class="timer-display" id="timer-display" aria-live="polite">25:00</div>
+                        <div class="timer-controls">
+                            <button id="btn-pomodoro">Pomodoro (25m)</button>
+                            <button id="btn-short-break">Short Break (5m)</button>
+                            <button id="btn-long-break">Long Break (15m)</button>
+                        </div>
+                        <div class="timer-actions">
+                            <button id="btn-timer-start" class="primary-btn">Start</button>
+                            <button id="btn-timer-reset" class="secondary-btn">Reset</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card stats-card">
+                        <h2>Session Statistics</h2>
+                        <div class="stats-grid">
+                            <div class="stat-box">
+                                <span class="stat-label">Total Tasks</span>
+                                <span class="stat-value" id="stat-total">0</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-label">Completed</span>
+                                <span class="stat-value" id="stat-completed">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="view-tasks" class="view-section hidden">
+                <div class="card full-width">
+                    <div class="task-header">
+                        <h2>Task Management</h2>
+                        <div class="task-filters">
+                            <button class="filter-btn active" data-filter="all">All</button>
+                            <button class="filter-btn" data-filter="active">Active</button>
+                            <button class="filter-btn" data-filter="completed">Completed</button>
+                        </div>
+                    </div>
+                    
+                    <form id="task-form" class="task-form">
+                        <input type="text" id="task-title" placeholder="What needs to be done?" required aria-label="Task Title">
+                        <select id="task-priority" aria-label="Task Priority">
+                            <option value="Low">Low Priority</option>
+                            <option value="Medium" selected>Medium Priority</option>
+                            <option value="High">High Priority</option>
+                        </select>
+                        <input type="date" id="task-date" aria-label="Due Date">
+                        <button type="submit" class="primary-btn">Add Task</button>
+                    </form>
+                    
+                    <div id="error-message" class="error-toast hidden" role="alert"></div>
+                    <ul id="task-list" class="task-list" aria-label="List of tasks"></ul>
+                </div>
+            </div>
+
+            <div id="view-settings" class="view-section hidden">
+                <div class="card full-width">
+                    <h2>Data Management</h2>
+                    <p class="settings-desc">Manage your local storage data safely. Data is kept locally on your device.</p>
+                    <div class="settings-actions">
+                        <button id="btn-export" class="secondary-btn">Export Data (JSON)</button>
+                        <label for="file-import" class="secondary-btn file-upload-btn">
+                            Import Data
+                            <input type="file" id="file-import" accept=".json" class="hidden-input">
+                        </label>
+                        <button id="btn-load-demo" class="secondary-btn outline">Load Demo Data</button>
+                        <button id="btn-clear-data" class="danger-btn">Clear All Data</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script type="module" src="src/app.js"></script>
+</body>
+</html>
