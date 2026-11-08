@@ -1,0 +1,19 @@
+{
+  "name": "focusflow",
+  "version": "2.0.0",
+  "description": "A personal productivity dashboard featuring task management and timestamp-based Pomodoro focus sessions.",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axiscreativemediahub-ui/focusflow.git"
+  },
+  "author": "AXIS Creative Media",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
